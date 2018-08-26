@@ -68,6 +68,8 @@ int main() {
     inserirAcaoMenu(options);
 
     string selecthd, input;
+
+    //alo teste de commit
     /*
     while (cin >> selecthd) {
         if (selecthd == "createhd") {
