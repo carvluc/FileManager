@@ -68,6 +68,7 @@ int main() {
     inserirAcaoMenu(options);
 
     string selecthd, input;
+    //alterando para efetivar na master
     /*
     while (cin >> selecthd) {
         if (selecthd == "createhd") {
