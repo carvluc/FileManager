@@ -3,7 +3,8 @@
 #include <map>
 #include <fstream>
 #include <vector>
-
+#include <string.h>
+#include <regex>
 using namespace std;
 
 //region Comments
@@ -26,26 +27,95 @@ public:
     int qtdB;
     int sizeB;
 
+
+
     void initialize(){
         cout << "Creating HD, please insert the infos: " << endl;
         cin >> HDname;
-        cin >> qtdB;
         cin >> sizeB;
+        cin >> qtdB;
+    }
+
+    void openHD(){
+        ofstream fs;
+        fs.open(HDname+".txt", ios::in | ios::out);
+        actions(fs);
+        //fs >> HDname;
+
+        fs.close();
+    }
+
+    void closeHD(){
+
+    }
+
+    void actions(ofstream & a) {
+        string opcao;
+        do{
+            cin>>opcao;
+
+           if(opcao == "create"){
+                a << "teste";
+           }
+
+
+        }while(opcao != "exit");
+
+    }
+
+    void createHD(){
+        ofstream fs;
+        fs.open(HDname+".txt", ios::out);
+        fs << HDname << sizeB;
+        fs.close();
+    }
+
+    const string &getHDname() const {
+        return HDname;
+    }
+
+    int getQtdB() const {
+        return qtdB;
+    }
+
+    int getSizeB() const {
+        return sizeB;
+    }
+
+    void setHDname(const string &HDname) {
+        VirtualHD::HDname = HDname;
+    }
+
+    void setQtdB(int qtdB) {
+        VirtualHD::qtdB = qtdB;
+    }
+
+    void setSizeB(int sizeB) {
+        VirtualHD::sizeB = sizeB;
+    }
+    bool validateHDName(){
     }
 };
 //endregion
 
 class Manager{
 public:
-    vector <VirtualHD> HDS;
+    //vector <VirtualHD> HDS;
+    //vector<VirtualHD>::iterator it;
+    map <string,VirtualHD> HDS;
+    map<string,VirtualHD>::iterator it;
+
+
+    string path = "# ";
     int qtdHDS;
-    void loadHD(){
+    void mLoadHD(){
         ifstream fs;
         VirtualHD temp;
         cout << "reading HDS ..." << endl << endl;
         fs.open("HardDriveManager.txt", ios::in);
-        while(fs >> temp.HDname >> temp.qtdB >> temp.sizeB){
-            HDS.push_back(temp);
+        while(fs >> temp.HDname >> temp.sizeB >> temp.qtdB){
+            HDS[temp.HDname] = temp;
+            //HDS.push_back(temp);
         }
 
         //fs.read((char*)&temp, sizeof(temp));
@@ -55,23 +125,84 @@ public:
         qtdHDS = HDS.size();
         cout << qtdHDS << " HDs read with success" << endl;
     }
-    void writeHD(VirtualHD newhd){
+    void mWriteHD(){
         ofstream fs;
-        HDS.push_back(newhd);
-        fs.open("HardDriveManager.txt", ios::out);
-        cout << "------------writing HDS----------" << endl << endl;
-        for(vector<VirtualHD>::iterator it = HDS.begin(); it != HDS.end(); ++it) {
-            cout << "name: " << it->HDname << endl;
-            cout << "size_b: " << it->sizeB << endl;
-            cout << "qtd_b: " << it->qtdB << endl << endl;
 
-            fs << it->HDname + " " << it->sizeB << " " << it->qtdB << "\n";
+        VirtualHD newhd;
+        newhd.initialize();
+        if(validateHD(newhd)){
+            HDS[newhd.getHDname()] = newhd;
+            newhd.createHD();
+            //HDS.push_back(newhd);
+
+            fs.open("HardDriveManager.txt", ios::out);
+            cout << "------------writing HDS----------" << endl << endl;
+
+            for (it = HDS.begin(); it != HDS.end(); ++it) {
+                cout << "name: " << it->second.HDname << endl;
+                cout << "size_b: " << it->second.sizeB << endl;
+                cout << "qtd_b: " << it->second.qtdB << endl << endl;
+
+                fs << it->second.HDname + " " << it->second.sizeB << " " << it->second.qtdB << "\n";
+            }
+
+            fs.close();
+
+            qtdHDS = HDS.size();
+            cout << qtdHDS << " HDs writed with success" << endl;
+        }
+    }
+
+    bool validateHD(VirtualHD temp){
+
+        cout<<"nome do hd : "<<temp.getHDname()<<endl;
+
+        if(temp.getHDname().find(":") != string::npos){
+            cout<<"Nome invalido, tente outro nome\n";
+            return false;
         }
 
-        fs.close();
-        qtdHDS = HDS.size();
-        cout << qtdHDS << " HDs writed with success" << endl;
+        if(searchHd(temp.getHDname())){
+            cout<<"Ja existe um HD com este nome, tente outro\n";
+            return false;
+        }
+
+        return true;
     }
+
+    bool searchHd(string hdSearch){
+
+
+        auto exist = HDS.find(hdSearch);
+        /*
+        for(it = HDS.begin(); it != HDS.end(); ++it) {
+            if(it->HDname == hdSearch)
+                return true;
+        }*/
+        if(exist == HDS.end())
+            return false;
+
+        return true;
+    }
+
+    void setPath(string path){
+        this->path = path;
+    }
+
+    string getPath(){
+        return this->path;
+    }
+
+    void changePath(string path, bool reset){
+        if(reset)
+            setPath("# ");
+        else
+            this->path += path + "> ";
+    }
+    void changeHD(string path){
+            setPath("# "+path+">");
+    }
+
 };
 
 
@@ -84,52 +215,40 @@ public:
 
 
 int main() {
+
+
     Manager manageHDS;
-    manageHDS.loadHD();
+    manageHDS.mLoadHD();
+
     VirtualHD newhd;
-    newhd.initialize();
-    manageHDS.writeHD(newhd);
+
     cout << "qtd de hds: " << manageHDS.HDS.size() << endl;
-    for(vector<VirtualHD>::iterator it = manageHDS.HDS.begin(); it != manageHDS.HDS.end(); ++it) {
-        cout << "name: " << it->HDname << endl;
-        cout << "size_b: " << it->sizeB << endl;
-        cout << "qtd_b: " << it->qtdB << endl << endl;
-    }
-
-    /*
-    cin >> input;
-    if(input == "createhd"){
-        VirtualHD* newhd = new VirtualHD();
-        HDS.push_back(newhd);
-    }
-     */
-
-    //alo teste de commit
-    /*
-    while (cin >> selecthd) {
-        if (selecthd == "createhd") {
-
-        } else {
-            if (encontrou) {
-                while (cin >> input) {
+    string opcao;
 
 
-                    if (input == "createhd") {
+    do {
 
-                    } else {
-                        options.find(input)->second();
-                    }
-                }
-            } else {
-                printf("Comando não é válido");
-            }
+        //smatch strMatch;
+        //regex regexVar(":");
 
+        cout << manageHDS.getPath();
+        cin >> opcao;
+        //regex_search(opcao, strMatch, regexVar);
+        //opcoes digitados pelo usuario
+        if (opcao == "createhd") {
+            manageHDS.mWriteHD();
+        } else if (opcao.find(":") != string::npos) {
+            string hdSearch = "";
+            hdSearch = opcao.replace(opcao.size()-1,1,"");
+            if (manageHDS.searchHd(hdSearch)) {
+                manageHDS.changeHD(hdSearch);
+                newhd.openHD();
+            }else
+                cout<<"HD não existente\n";
         }
-        //openFile();
-        system("pause");
 
-        return 0;
+        }while(opcao != "exit");
+
     }
-     */
-}
+
 // endregion
