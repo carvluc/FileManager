@@ -2,6 +2,7 @@
 #include <iostream>
 #include <map>
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
@@ -21,54 +22,89 @@ typedef void(*PointerFunction);
 
 class VirtualHD {
 public:
-    string nameHD;
-    int num;
-    double tam;
+    string HDname;
+    int qtdB;
+    int sizeB;
 
-    void openFile() {
-        try {
-            ofstream fs;
-            fs.open("HardDrive.txt", fstream::out);
-            string formathd = "";
-            fs.write("Lucas", sizeof("Lucas"));
-            fs.close();
-        }
-        catch (exception ex) {
-
-        }
-    }
-
-    VirtualHD() {
-        VirtualHD hd;
-        cin >> hd.nameHD;
-        cin >> hd.tam;
-        cin >> hd.num;
-        openFile();
+    void initialize(){
+        cout << "Creating HD, please insert the infos: " << endl;
+        cin >> HDname;
+        cin >> qtdB;
+        cin >> sizeB;
     }
 };
 //endregion
 
+class Manager{
+public:
+    vector <VirtualHD> HDS;
+    int qtdHDS;
+    void loadHD(){
+        ifstream fs;
+        VirtualHD temp;
+        cout << "reading HDS ..." << endl << endl;
+        fs.open("HardDriveManager.txt", ios::in);
+        while(fs >> temp.HDname >> temp.qtdB >> temp.sizeB){
+            HDS.push_back(temp);
+        }
+
+        //fs.read((char*)&temp, sizeof(temp));
+        //HDS.push_back(temp);
+        fs.close();
+
+        qtdHDS = HDS.size();
+        cout << qtdHDS << " HDs read with success" << endl;
+    }
+    void writeHD(VirtualHD newhd){
+        ofstream fs;
+        HDS.push_back(newhd);
+        fs.open("HardDriveManager.txt", ios::out);
+        cout << "------------writing HDS----------" << endl << endl;
+        for(vector<VirtualHD>::iterator it = HDS.begin(); it != HDS.end(); ++it) {
+            cout << "name: " << it->HDname << endl;
+            cout << "size_b: " << it->sizeB << endl;
+            cout << "qtd_b: " << it->qtdB << endl << endl;
+
+            fs << it->HDname + " " << it->sizeB << " " << it->qtdB << "\n";
+        }
+
+        fs.close();
+        qtdHDS = HDS.size();
+        cout << qtdHDS << " HDs writed with success" << endl;
+    }
+};
+
+
 //region Static Methods
 
-void teste() {
-    cout << "funciona\n";
-}
-
-
-void inserirAcaoMenu(map<string, PointerFunction>& options) {
-    //options["createhd"] = &createVirtualHD;
-
-}
 // endregion
 
 //region Main
 
-int main() {
-    map<string, PointerFunction> options;
-    inserirAcaoMenu(options);
 
-    string selecthd, input;
-    //alterando para efetivar na master
+
+int main() {
+    Manager manageHDS;
+    manageHDS.loadHD();
+    VirtualHD newhd;
+    newhd.initialize();
+    manageHDS.writeHD(newhd);
+    cout << "qtd de hds: " << manageHDS.HDS.size() << endl;
+    for(vector<VirtualHD>::iterator it = manageHDS.HDS.begin(); it != manageHDS.HDS.end(); ++it) {
+        cout << "name: " << it->HDname << endl;
+        cout << "size_b: " << it->sizeB << endl;
+        cout << "qtd_b: " << it->qtdB << endl << endl;
+    }
+
+    /*
+    cin >> input;
+    if(input == "createhd"){
+        VirtualHD* newhd = new VirtualHD();
+        HDS.push_back(newhd);
+    }
+     */
+
+    //alo teste de commit
     /*
     while (cin >> selecthd) {
         if (selecthd == "createhd") {
