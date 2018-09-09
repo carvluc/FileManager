@@ -1,24 +1,11 @@
 #include <stdlib.h>
 #include <iostream>
 #include <map>
-
-#include <regex>
 #include <iomanip>
+#include "Manager.h"
+#include "VirtualHD.h"
 
 using namespace std;
-
-//region Classe
-
-
-//endregion
-
-
-
-//region Static Methods
-
-// endregion
-
-//region Main
 
 int main() {
     Manager manageHDS;
@@ -31,20 +18,18 @@ int main() {
     do {
         cout << manageHDS.getPath();
         cin >> option;
-        //regex_search(opcao, strMatch, regexVar);
-        //opcoes digitados pelo usuario
         if (option == "createhd") {
             manageHDS.mWriteHD();
         } else if (option.find(":") != string::npos) {
             string hdSearch;
             hdSearch = option.replace(option.size()-1,1,"");
-            if (manageHDS.searchHd(hdSearch)) {
-                manageHDS.changeHD(hdSearch);
+            if (manageHDS.searchHD(hdSearch)) {
                 manageHDS.HDS[hdSearch].openHD();
             }else
                 cout<<"HD não existente\n";
         }else if(option == "formathd"){
             cin>>name;
+            manageHDS.format(name);
 
         }else if(option == "dirhd"){
             manageHDS.printHDS();
