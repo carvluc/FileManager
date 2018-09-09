@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="SO_Final"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="SO_Final">
+				<Option output="H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/SO_Final.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="g:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="g:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="g:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="g:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="g:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="g:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="g:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 SO_Final"/>
+					<CompileFile command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="SO_Final/fast">
+				<Option output="H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/SO_Final.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="g:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="g:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="g:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="g:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="g:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="g:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="g:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 SO_Final/fast"/>
+					<CompileFile command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="G:/MinGW/bin/mingw32-make.exe -f &quot;H:/FEI/6 Ciclo/SO/SO_Final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="H:/FEI/6 Ciclo/SO/SO_Final/Content.cpp">
+			<Option target="SO_Final"/>
+		</Unit>
+		<Unit filename="H:/FEI/6 Ciclo/SO/SO_Final/Content.h">
+			<Option target="SO_Final"/>
+		</Unit>
+		<Unit filename="H:/FEI/6 Ciclo/SO/SO_Final/File.cpp">
+			<Option target="SO_Final"/>
+		</Unit>
+		<Unit filename="H:/FEI/6 Ciclo/SO/SO_Final/File.h">
+			<Option target="SO_Final"/>
+		</Unit>
+		<Unit filename="H:/FEI/6 Ciclo/SO/SO_Final/Folder.cpp">
+			<Option target="SO_Final"/>
+		</Unit>
+		<Unit filename="H:/FEI/6 Ciclo/SO/SO_Final/Folder.h">
+			<Option target="SO_Final"/>
+		</Unit>
+		<Unit filename="H:/FEI/6 Ciclo/SO/SO_Final/Manager.cpp">
+			<Option target="SO_Final"/>
+		</Unit>
+		<Unit filename="H:/FEI/6 Ciclo/SO/SO_Final/Manager.h">
+			<Option target="SO_Final"/>
+		</Unit>
+		<Unit filename="H:/FEI/6 Ciclo/SO/SO_Final/VirtualHD.cpp">
+			<Option target="SO_Final"/>
+		</Unit>
+		<Unit filename="H:/FEI/6 Ciclo/SO/SO_Final/VirtualHD.h">
+			<Option target="SO_Final"/>
+		</Unit>
+		<Unit filename="H:/FEI/6 Ciclo/SO/SO_Final/main.cpp">
+			<Option target="SO_Final"/>
+		</Unit>
+		<Unit filename="H:/FEI/6 Ciclo/SO/SO_Final/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

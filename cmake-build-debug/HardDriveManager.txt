@@ -1,0 +1,3 @@
+hdteste 32 100
+italo 32 100
+lucas 32 100

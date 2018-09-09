@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+H:/FEI/6 Ciclo/SO/SO_Final/Manager.h
+map
+-
+
+H:/FEI/6 Ciclo/SO/SO_Final/VirtualHD.cpp
+VirtualHD.h
+H:/FEI/6 Ciclo/SO/SO_Final/VirtualHD.h
+Manager.h
+H:/FEI/6 Ciclo/SO/SO_Final/Manager.h
+
+H:/FEI/6 Ciclo/SO/SO_Final/VirtualHD.h
+fstream
+-
+iostream
+-
+iomanip
+-
+Manager.h
+H:/FEI/6 Ciclo/SO/SO_Final/Manager.h
+
