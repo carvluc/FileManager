@@ -1,0 +1,12 @@
+create - cria 
+createdir
+cd
+cd..
+cd\
+type
+typehd
+dir
+remove
+rename
+renamedir
+exit

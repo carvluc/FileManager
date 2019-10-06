@@ -1,100 +1,44 @@
 #include <stdlib.h>
 #include <iostream>
-#include <map>
-#include <fstream>
+
+#include "Manager.h"
+#include "VirtualHD.h"
 
 using namespace std;
 
-//region Comments
-/*1 bloco - 32 bytes
-1 carac = 1byte, então cada bloco vai ter 32 zeros.
-arquivo de 1MB = 1024/32 = 32blocos*/
-//endregion
-
-//region Types
-
-typedef void(*PointerFunction);
-
-//endregion
-
-//region Classes
-
-class VirtualHD {
-public:
-    string nameHD;
-    int num;
-    double tam;
-
-    void openFile() {
-        try {
-            ofstream fs;
-            fs.open("HardDrive.txt", fstream::out);
-            string formathd = "";
-            fs.write("Lucas", sizeof("Lucas"));
-            fs.close();
-        }
-        catch (exception ex) {
-
-        }
-    }
-
-    VirtualHD() {
-        VirtualHD hd;
-        cin >> hd.nameHD;
-        cin >> hd.tam;
-        cin >> hd.num;
-        openFile();
-    }
-};
-//endregion
-
-//region Static Methods
-
-void teste() {
-    cout << "funciona\n";
-}
-
-
-void inserirAcaoMenu(map<string, PointerFunction>& options) {
-    //options["createhd"] = &createVirtualHD;
-
-}
-// endregion
-
-//region Main
-
 int main() {
-    map<string, PointerFunction> options;
-    inserirAcaoMenu(options);
+    Manager manageHDS;
+    string option,
+            name;
 
-    string selecthd, input;
+    manageHDS.loadHD();
 
-    //alo teste de commit
-    /*
-    while (cin >> selecthd) {
-        if (selecthd == "createhd") {
-
-        } else {
-            if (encontrou) {
-                while (cin >> input) {
-
-
-                    if (input == "createhd") {
-
-                    } else {
-                        options.find(input)->second();
-                    }
-                }
-            } else {
-                printf("Comando não é válido");
-            }
-
+    do {
+        cout << manageHDS.getPath();
+        cin >> option;
+        if (option == "createhd") {
+            manageHDS.writeHD();
+        } else if (option.find(":") != string::npos) {
+            string hdSearch;
+            hdSearch = option.replace(option.size()-1,1,"");
+            if (manageHDS.searchHD(hdSearch)) {
+                manageHDS.HDS[hdSearch].openHD();
+            }else
+                cout << "HD nao existente" << endl;
+        }else if(option == "formathd"){
+            cin >> name;
+            cin.get();
+            manageHDS.formatHD(name);
+        }else if(option == "dirhd"){
+            manageHDS.printHDS();
+        }else if(option == "removehd") {
+            manageHDS.removeHD();
+        }else if(option == "statushd"){
+            manageHDS.statusHD();
+        }else if(option == "?" || option == "help"){
+            manageHDS.help();
+        }else if(option != "exit"){
+            cout << "Comando nao existente!" << endl;
         }
-        //openFile();
-        system("pause");
-
-        return 0;
-    }
-     */
+    }while(option != "exit");
 }
-// endregion

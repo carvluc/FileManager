@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
-project(Sistemas_Operacionais)
+project(SO_Final)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCE_FILES main.cpp)
-add_executable(Sistemas_Operacionais ${SOURCE_FILES})
+add_executable(SO_Final main.cpp Manager.h Manager.cpp VirtualHD.h VirtualHD.cpp Block.cpp Block.h)
